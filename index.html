@@ -4,278 +4,469 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Ye Min Aung</title>
-<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
-* { box-sizing: border-box; margin: 0; padding: 0; }
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-body {
-  font-family: 'Source Sans 3', sans-serif;
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 1.75;
-  color: #222;
-  background: #fff;
+:root {
+  --teal:      #0d9488;
+  --teal-dark: #0f766e;
+  --teal-pale: #ccfbf1;
+  --teal-mid:  #5eead4;
+  --blue:      #0ea5e9;
+  --blue-pale: #e0f2fe;
+  --text:      #1c1c1c;
+  --muted:     #6b7280;
+  --light:     #f0fdfa;
+  --border:    #d1fae5;
+  --white:     #ffffff;
 }
 
-a { color: #1a5276; text-decoration: none; }
+body {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 15.5px;
+  line-height: 1.75;
+  color: var(--text);
+  background: #fafffe;
+}
+
+a { color: var(--teal-dark); text-decoration: none; }
 a:hover { text-decoration: underline; }
 
-/* NAV */
+/* ── NAV ── */
 header {
-  border-bottom: 1px solid #ddd;
-  padding: 0 2rem;
+  background: var(--white);
+  border-bottom: 2px solid var(--teal-mid);
+  padding: 0 2.5rem;
+  height: 58px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 56px;
   position: sticky;
   top: 0;
-  background: #fff;
-  z-index: 10;
+  z-index: 20;
 }
 
-header .name {
-  font-family: 'EB Garamond', serif;
-  font-size: 1.2rem;
-  font-weight: 500;
-  color: #111;
+.nav-name {
+  font-family: 'DM Serif Display', serif;
+  font-size: 1.15rem;
+  color: var(--teal-dark);
+  letter-spacing: 0.01em;
 }
 
-nav {
-  display: flex;
-  gap: 1.8rem;
-  list-style: none;
-}
+nav { display: flex; gap: 1.6rem; }
 
 nav a {
-  font-size: 0.88rem;
-  color: #444;
+  font-size: 0.84rem;
+  font-weight: 500;
+  color: var(--muted);
   text-decoration: none;
+  letter-spacing: 0.03em;
+  padding-bottom: 2px;
+  border-bottom: 2px solid transparent;
+  transition: color 0.15s, border-color 0.15s;
 }
 
-nav a:hover { color: #111; border-bottom: 1px solid #111; }
+nav a:hover { color: var(--teal); border-bottom-color: var(--teal-mid); text-decoration: none; }
 
-/* PAGE */
-.page {
-  max-width: 900px;
+/* ── HERO ── */
+.hero {
+  background: linear-gradient(135deg, #0d9488 0%, #0ea5e9 100%);
+  padding: 4rem 2.5rem 3.5rem;
+  color: white;
+}
+
+.hero-inner {
+  max-width: 860px;
   margin: 0 auto;
-  padding: 3.5rem 2rem 5rem;
-}
-
-/* PROFILE */
-.profile {
   display: grid;
-  grid-template-columns: 180px 1fr;
+  grid-template-columns: 160px 1fr;
   gap: 2.5rem;
-  margin-bottom: 3.5rem;
-  align-items: start;
+  align-items: center;
 }
 
-.profile-photo {
-  width: 180px;
-  height: 220px;
-  background: #f0f0f0;
-  border: 1px solid #ccc;
+.avatar {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.2);
+  border: 3px solid rgba(255,255,255,0.6);
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  color: #aaa;
-  font-size: 0.78rem;
-  text-align: center;
-  gap: 0.5rem;
+  font-family: 'DM Serif Display', serif;
+  font-size: 3rem;
+  color: white;
+  overflow: hidden;
+  flex-shrink: 0;
 }
 
-/* To add your photo later, replace the div.profile-photo content with:
-   <img src="photo.jpg" style="width:180px;height:220px;object-fit:cover;border:1px solid #ccc;"> */
+.avatar img { width: 100%; height: 100%; object-fit: cover; }
 
-.profile-text h1 {
-  font-family: 'EB Garamond', serif;
-  font-size: 2rem;
-  font-weight: 500;
-  color: #111;
-  line-height: 1.2;
-  margin-bottom: 0.2rem;
+.hero h1 {
+  font-family: 'DM Serif Display', serif;
+  font-size: 2.4rem;
+  font-weight: 400;
+  line-height: 1.15;
+  margin-bottom: 0.3rem;
 }
 
-.profile-text .role {
-  font-size: 0.9rem;
-  color: #555;
+.hero .tagline {
+  font-size: 0.88rem;
+  font-weight: 400;
+  opacity: 0.88;
+  margin-bottom: 1rem;
+  letter-spacing: 0.02em;
+}
+
+.hero p {
+  font-size: 0.93rem;
+  opacity: 0.9;
+  max-width: 500px;
+  line-height: 1.7;
   margin-bottom: 1.3rem;
 }
 
-.profile-text p {
-  font-size: 0.94rem;
-  color: #333;
-  margin-bottom: 0.85rem;
-  max-width: 520px;
+.hero-pills { display: flex; gap: 0.6rem; flex-wrap: wrap; }
+
+.pill {
+  background: rgba(255,255,255,0.18);
+  border: 1px solid rgba(255,255,255,0.35);
+  border-radius: 2rem;
+  padding: 0.28rem 0.85rem;
+  font-size: 0.79rem;
+  color: white;
+  text-decoration: none;
+  transition: background 0.15s;
+}
+.pill:hover { background: rgba(255,255,255,0.3); text-decoration: none; color: white; }
+
+/* ── MAIN ── */
+.page {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 2.5rem 2.5rem 5rem;
+  display: grid;
+  grid-template-columns: 1fr 280px;
+  gap: 3rem;
+  align-items: start;
 }
 
-.contact-info {
-  margin-top: 1.1rem;
-  font-size: 0.86rem;
-  color: #444;
-  line-height: 2;
+/* ── SECTION ── */
+.sec { margin-bottom: 2.8rem; }
+
+.sec-title {
+  font-family: 'DM Serif Display', serif;
+  font-size: 1.3rem;
+  color: var(--teal-dark);
+  margin-bottom: 1.2rem;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
 }
 
-.contact-info .label { color: #999; margin-right: 0.4rem; }
+.sec-title::after {
+  content: '';
+  flex: 1;
+  height: 1.5px;
+  background: var(--border);
+}
 
-/* SECTIONS */
-.section { margin-bottom: 3rem; }
+/* ── EDUCATION ── */
+.edu-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 1rem 1.25rem;
+  margin-bottom: 0.75rem;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 0.5rem;
+  align-items: start;
+  border-left: 4px solid var(--teal);
+}
 
-.section h2 {
-  font-family: 'EB Garamond', serif;
-  font-size: 1.35rem;
+.edu-card .deg {
+  font-size: 0.93rem;
   font-weight: 500;
   color: #111;
-  border-bottom: 1px solid #ddd;
-  padding-bottom: 0.35rem;
-  margin-bottom: 1.4rem;
+  line-height: 1.35;
 }
 
-/* RESEARCH ENTRIES */
-.entry { margin-bottom: 1.6rem; }
+.edu-card .school {
+  font-size: 0.82rem;
+  color: var(--muted);
+  margin-top: 0.15rem;
+}
 
-.entry .title {
-  font-size: 0.95rem;
-  font-weight: 600;
+.edu-card .year {
+  font-size: 0.78rem;
+  color: var(--teal);
+  font-weight: 500;
+  white-space: nowrap;
+  padding-top: 2px;
+}
+
+/* ── RESEARCH ── */
+.res-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 1.1rem 1.25rem;
+  margin-bottom: 0.75rem;
+}
+
+.res-card .r-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 0.75rem;
+  margin-bottom: 0.2rem;
+}
+
+.res-card .r-title {
+  font-size: 0.92rem;
+  font-weight: 500;
   color: #111;
   line-height: 1.4;
+}
+
+.badge {
+  font-size: 0.72rem;
+  font-weight: 500;
+  padding: 0.18rem 0.6rem;
+  border-radius: 2rem;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.badge-teal { background: var(--teal-pale); color: var(--teal-dark); }
+.badge-blue { background: var(--blue-pale); color: #0369a1; }
+
+.res-card .r-advisor {
+  font-size: 0.81rem;
+  color: var(--muted);
+  font-style: italic;
+  margin-bottom: 0.5rem;
+}
+
+.res-card ul {
+  padding-left: 1rem;
+  font-size: 0.84rem;
+  color: #444;
+}
+
+.res-card ul li { margin-bottom: 0.2rem; line-height: 1.6; }
+
+/* ── WORK ── */
+.work-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 1.1rem 1.25rem;
+  margin-bottom: 0.75rem;
+  border-left: 4px solid var(--blue);
+}
+
+.work-card .w-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 0.5rem;
   margin-bottom: 0.1rem;
 }
 
-.entry .meta {
-  font-size: 0.84rem;
-  color: #666;
-  font-style: italic;
-  margin-bottom: 0.45rem;
-}
+.work-card .w-title { font-size: 0.92rem; font-weight: 500; color: #111; }
+.work-card .w-date { font-size: 0.78rem; color: var(--muted); white-space: nowrap; }
+.work-card .w-place { font-size: 0.82rem; color: var(--muted); font-style: italic; margin-bottom: 0.45rem; }
 
-.entry ul {
-  padding-left: 1.2rem;
-  font-size: 0.88rem;
+.work-card ul {
+  padding-left: 1rem;
+  font-size: 0.84rem;
   color: #444;
 }
 
-.entry ul li { margin-bottom: 0.2rem; }
+.work-card ul li { margin-bottom: 0.2rem; line-height: 1.6; }
 
-/* EDUCATION */
-.edu-row {
-  display: grid;
-  grid-template-columns: 1fr auto;
-  gap: 1rem;
-  margin-bottom: 1rem;
-  align-items: baseline;
+/* ── SIDEBAR ── */
+.sidebar { display: flex; flex-direction: column; gap: 1.8rem; }
+
+.side-block {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 1.1rem 1.2rem;
 }
 
-.edu-row .degree { font-size: 0.95rem; font-weight: 600; color: #111; }
-.edu-row .school { font-size: 0.87rem; color: #555; }
-.edu-row .year { font-size: 0.83rem; color: #888; white-space: nowrap; }
+.side-title {
+  font-family: 'DM Serif Display', serif;
+  font-size: 1rem;
+  color: var(--teal-dark);
+  margin-bottom: 0.9rem;
+  padding-bottom: 0.4rem;
+  border-bottom: 1.5px solid var(--border);
+}
 
 /* AWARDS */
-.awards-table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
-.awards-table tr { border-bottom: 1px solid #eee; }
-.awards-table tr:last-child { border-bottom: none; }
-.awards-table td { padding: 0.6rem 0.4rem; vertical-align: top; color: #333; }
-.awards-table td:first-child { width: 90px; color: #888; white-space: nowrap; padding-right: 1rem; }
-.awards-table .sub { color: #666; font-size: 0.82rem; }
-
-/* SKILLS */
-.skills-grid {
-  display: grid;
-  grid-template-columns: 120px 1fr;
-  row-gap: 0.55rem;
-  column-gap: 1rem;
-  font-size: 0.88rem;
+.award-row {
+  display: flex;
+  gap: 0.6rem;
+  align-items: flex-start;
+  margin-bottom: 0.7rem;
+  padding-bottom: 0.7rem;
+  border-bottom: 1px solid #f0fdf4;
 }
 
-.skills-grid .lbl { color: #888; font-size: 0.83rem; padding-top: 1px; }
-.skills-grid .val { color: #333; }
+.award-row:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+
+.award-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--teal-mid);
+  flex-shrink: 0;
+  margin-top: 7px;
+}
+
+.award-row .a-name { font-size: 0.82rem; font-weight: 500; color: #111; line-height: 1.35; }
+.award-row .a-year { font-size: 0.75rem; color: var(--muted); margin-top: 0.05rem; }
+
+/* SKILLS */
+.skill-row { margin-bottom: 0.75rem; }
+.skill-row:last-child { margin-bottom: 0; }
+.skill-lbl { font-size: 0.72rem; font-weight: 500; color: var(--teal); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 0.25rem; }
+.skill-tags { display: flex; flex-wrap: wrap; gap: 0.3rem; }
+.stag { font-size: 0.78rem; background: var(--light); color: var(--teal-dark); border: 1px solid var(--border); border-radius: 2rem; padding: 0.18rem 0.6rem; }
+
+/* LANGUAGES */
+.lang-row { margin-bottom: 0.65rem; }
+.lang-row:last-child { margin-bottom: 0; }
+.lang-top { display: flex; justify-content: space-between; font-size: 0.84rem; }
+.lang-top .ln { font-weight: 500; color: #111; }
+.lang-top .lv { font-size: 0.78rem; color: var(--muted); }
+.lang-bar { height: 4px; background: #e5e7eb; border-radius: 4px; margin-top: 5px; overflow: hidden; }
+.lang-fill { height: 100%; background: linear-gradient(90deg, var(--teal), var(--blue)); border-radius: 4px; }
 
 /* FOOTER */
 footer {
-  border-top: 1px solid #ddd;
   text-align: center;
-  padding: 1.5rem;
-  font-size: 0.8rem;
-  color: #bbb;
+  padding: 2rem;
+  font-size: 0.78rem;
+  color: var(--muted);
+  border-top: 1px solid var(--border);
 }
 
-@media (max-width: 640px) {
-  .profile { grid-template-columns: 1fr; }
-  .edu-row { grid-template-columns: 1fr; }
+/* RESPONSIVE */
+@media (max-width: 700px) {
+  .hero-inner { grid-template-columns: 1fr; text-align: center; }
+  .avatar { margin: 0 auto; }
+  .hero-pills { justify-content: center; }
+  .page { grid-template-columns: 1fr; padding: 1.5rem 1.2rem 4rem; }
+  nav { gap: 0.9rem; }
   header { padding: 0 1rem; }
-  nav { gap: 1rem; }
-  .page { padding: 2rem 1.2rem 4rem; }
+  .edu-card { grid-template-columns: 1fr; }
 }
 </style>
 </head>
 <body>
 
+<!-- NAV -->
 <header>
-  <span class="name">Ye Min Aung</span>
+  <span class="nav-name">Ye Min Aung</span>
   <nav>
-    <a href="#research">Research</a>
     <a href="#education">Education</a>
+    <a href="#research">Research</a>
     <a href="#awards">Awards</a>
-    <a href="#skills">Skills</a>
     <a href="#experience">Experience</a>
   </nav>
 </header>
 
-<div class="page">
-
-  <!-- PROFILE -->
-  <div class="profile">
-
-    <div class="profile-photo">
-      <!-- Replace this whole div with your photo tag when ready -->
-      <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="#ccc" stroke-width="1.2">
-        <circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/>
-      </svg>
-      Photo placeholder
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-inner">
+    <div class="avatar">
+      <!-- Replace with: <img src="photo.jpg"> when you have a photo -->
+      YMA
     </div>
-
-    <div class="profile-text">
+    <div>
       <h1>Ye Min Aung</h1>
-      <p class="role">B.A. Candidate in Economics &amp; Data Science · National Tsing Hua University, Taiwan</p>
-
-      <p>I am an undergraduate researcher at NTHU working across economics, machine learning, and radar sensing systems. My current projects involve ISAC navigation using mmWave radar and the heterogeneous effects of public debt on economic growth.</p>
-
-      <p>I am interested in interdisciplinary work that connects quantitative methods with real-world policy and engineering problems.</p>
-
-      <div class="contact-info">
-        <div><span class="label">Email</span><a href="mailto:ye.ma@gapp.nthu.edu.tw">ye.ma@gapp.nthu.edu.tw</a></div>
-        <div><span class="label">Address</span>TSMC Building, No. 101, Sec. 2, Kuang-Fu Road, Hsinchu 300044, Taiwan</div>
+      <p class="tagline">B.A. Candidate in Economics & Data Science · National Tsing Hua University, Taiwan</p>
+      <p>Undergraduate researcher working across economics, machine learning, and radar sensing systems. Interested in interdisciplinary work connecting quantitative methods with real-world policy and engineering problems.</p>
+      <div class="hero-pills">
+        <a href="mailto:ye.ma@gapp.nthu.edu.tw" class="pill">✉ ye.ma@gapp.nthu.edu.tw</a>
+        <span class="pill">📍 Hsinchu, Taiwan</span>
+        <span class="pill">🎓 Expected 2026</span>
       </div>
     </div>
+  </div>
+</div>
 
+<!-- MAIN -->
+<div class="page">
+<div>
+
+  <!-- EDUCATION -->
+  <div class="sec" id="education">
+    <h2 class="sec-title">Education</h2>
+
+    <div class="edu-card">
+      <div>
+        <div class="deg">B.A. in Economics & Data Science</div>
+        <div class="school">National Tsing Hua University, Hsinchu, Taiwan</div>
+      </div>
+      <div class="year">2023 – 2026</div>
+    </div>
+
+    <div class="edu-card">
+      <div>
+        <div class="deg">Diploma in Business Management</div>
+        <div class="school">Banbury and Bicester College, UK (delivered in Myanmar)</div>
+      </div>
+      <div class="year">2018 – 2020</div>
+    </div>
+
+    <div class="edu-card">
+      <div>
+        <div class="deg">B.Sc. in Physics (1st semester of 3rd year completed)</div>
+        <div class="school">University of Yangon, Myanmar</div>
+      </div>
+      <div class="year">2018 – 2020</div>
+    </div>
   </div>
 
   <!-- RESEARCH -->
-  <div class="section" id="research">
-    <h2>Research Experience</h2>
+  <div class="sec" id="research">
+    <h2 class="sec-title">Research Experience</h2>
 
-    <div class="entry">
-      <div class="title">Integrated Sensing and Communication (ISAC) Navigation System</div>
-      <div class="meta">Jan. 2026 – Present &ensp;·&ensp; Advisor: Prof. Jang-Ping Sheu, Department of Computer Science, NTHU</div>
+    <div class="res-card">
+      <div class="r-header">
+        <div class="r-title">Integrated Sensing and Communication (ISAC) Navigation System</div>
+        <span class="badge badge-teal">Ongoing</span>
+      </div>
+      <div class="r-advisor">Jan. 2026 – Present · Advisor: Prof. Jang-Ping Sheu, Dept. of Computer Science, NTHU</div>
       <ul>
         <li>Engineered a Dual-functional Radar-Communication (DFRC) system on a mobile robot using Rust for simultaneous sensing and data transmission within a shared mmWave spectrum.</li>
         <li>Designed a joint waveform to co-optimise communication throughput and sensing precision.</li>
       </ul>
     </div>
 
-    <div class="entry">
-      <div class="title">Heterogeneous Effects of Domestic and External Debt on Economic Growth</div>
-      <div class="meta">Jul. 2025 – Feb. 2026 &ensp;·&ensp; National Science and Technology Council — Undergraduate Research Grant &ensp;·&ensp; Advisor: Prof. Shih-Chang Lin, Department of Economics, NTHU</div>
+    <div class="res-card">
+      <div class="r-header">
+        <div class="r-title">Heterogeneous Effects of Domestic and External Debt on Economic Growth</div>
+        <span class="badge badge-blue">NSTC Grant</span>
+      </div>
+      <div class="r-advisor">Jul. 2025 – Feb. 2026 · Advisor: Prof. Shih-Chang Lin, Dept. of Economics, NTHU</div>
       <ul>
         <li>Applied machine learning to cross-country panel data (2014–2024) to identify non-linear debt thresholds and their heterogeneous effects on GDP growth across developed and developing economies.</li>
       </ul>
     </div>
 
-    <div class="entry">
-      <div class="title">mmWave Radar-based Human Pose Estimation</div>
-      <div class="meta">Jul. 2025 – Jan. 2026 &ensp;·&ensp; Advisor: Prof. Jang-Ping Sheu, Department of Computer Science, NTHU</div>
+    <div class="res-card">
+      <div class="r-header">
+        <div class="r-title">mmWave Radar-based Human Pose Estimation</div>
+        <span class="badge badge-teal">Completed</span>
+      </div>
+      <div class="r-advisor">Jul. 2025 – Jan. 2026 · Advisor: Prof. Jang-Ping Sheu, Dept. of Computer Science, NTHU</div>
       <ul>
         <li>Developed a privacy-preserving pose estimation system using TI AWR1642 mmWave radar.</li>
         <li>Implemented a Transformer-based model on radar point cloud sequences for robust posture recognition.</li>
@@ -283,96 +474,16 @@ footer {
     </div>
   </div>
 
-  <!-- EDUCATION -->
-  <div class="section" id="education">
-    <h2>Education</h2>
-
-    <div class="edu-row">
-      <div>
-        <div class="degree">B.A. in Economics &amp; Data Science</div>
-        <div class="school">National Tsing Hua University, Hsinchu, Taiwan</div>
-      </div>
-      <div class="year">2023 – 2026 (expected)</div>
-    </div>
-
-    <div class="edu-row">
-      <div>
-        <div class="degree">Diploma in Business Management</div>
-        <div class="school">Banbury and Bicester College, United Kingdom (delivered in Myanmar)</div>
-      </div>
-      <div class="year">2018 – 2020</div>
-    </div>
-
-    <div class="edu-row">
-      <div>
-        <div class="degree">B.Sc. in Physics (completed first semester of 3rd year)</div>
-        <div class="school">University of Yangon, Myanmar</div>
-      </div>
-      <div class="year">2018 – 2020</div>
-    </div>
-  </div>
-
-  <!-- AWARDS -->
-  <div class="section" id="awards">
-    <h2>Grants &amp; Awards</h2>
-
-    <table class="awards-table">
-      <tr>
-        <td>2023–2027</td>
-        <td>MOE Taiwan Scholarship Grant, National Tsing Hua University, Bachelor's Programme</td>
-      </tr>
-      <tr>
-        <td>2023–2024</td>
-        <td>NTHU International Student Scholarship Grant, National Tsing Hua University</td>
-      </tr>
-      <tr>
-        <td>2025–2026</td>
-        <td>National Science and Technology Council — Undergraduate Research Grant</td>
-      </tr>
-      <tr>
-        <td>Dec. 2024</td>
-        <td>Myanmar Students Association in Taiwan Scholarship Grant</td>
-      </tr>
-      <tr>
-        <td>Dec. 2025</td>
-        <td>Yunnan Natives Association Scholarship Grant</td>
-      </tr>
-      <tr>
-        <td>Dec. 2025</td>
-        <td>Excellence Award — Foreign Students' Chinese Speaking Contest, National Dr. Sun Yat-sen Memorial Hall, Taipei</td>
-      </tr>
-      <tr>
-        <td>2024 &amp; 2025</td>
-        <td>
-          Outstanding Academic Work Award, NTHU Center for General Education<br>
-          <span class="sub">Spring 2024: Prose "Bloodline and Roots: A Three-Generation History of a Burmese-Chinese Family"<br>
-          Fall 2025: Curation proposal "Peranakan Culture Curation: Esthetics on the Maritime Silk Road"</span>
-        </td>
-      </tr>
-    </table>
-  </div>
-
-  <!-- SKILLS & LANGUAGES -->
-  <div class="section" id="skills">
-    <h2>Technical Skills &amp; Languages</h2>
-
-    <div class="skills-grid">
-      <span class="lbl">Programming</span><span class="val">Python, R, C++, Rust</span>
-      <span class="lbl">Tools</span><span class="val">PyTorch, scikit-learn, Power BI, MATLAB, Git, LaTeX</span>
-      <span class="lbl">Burmese</span><span class="val">Native</span>
-      <span class="lbl">Chinese</span><span class="val">Fluent — TOCFL Level 6 (C2)</span>
-      <span class="lbl">English</span><span class="val">Good — C1</span>
-      <span class="lbl">Shan</span><span class="val">Good</span>
-    </div>
-  </div>
-
   <!-- WORK EXPERIENCE -->
-  <div class="section" id="experience">
-    <h2>Work Experience</h2>
+  <div class="sec" id="experience">
+    <h2 class="sec-title">Work Experience</h2>
 
-    <div class="entry">
-      <div class="title">Logistics Supervisor &amp; Internal Trainer</div>
-      <div class="meta">Jun. 2021 – Jul. 2023 &ensp;·&ensp; Handa Industries Co., Ltd. (Yangon Branch 2), Myanmar</div>
+    <div class="work-card">
+      <div class="w-top">
+        <div class="w-title">Logistics Supervisor & Internal Trainer</div>
+        <span class="w-date">Jun. 2021 – Jul. 2023</span>
+      </div>
+      <div class="w-place">Handa Industries Co., Ltd. (Yangon Branch 2), Myanmar</div>
       <ul>
         <li>Managed supply chain operations and coordinated with Chinese suppliers for raw-material procurement.</li>
         <li>Oversaw warehouse operations and implemented inventory optimisation systems.</li>
@@ -380,24 +491,148 @@ footer {
       </ul>
     </div>
 
-    <div class="entry">
-      <div class="title">Co-Learning Circle Convener</div>
-      <div class="meta">Sep. 2025 &ensp;·&ensp; NTHU Center for Teaching &amp; Learning Development, Hsinchu, Taiwan</div>
+    <div class="work-card">
+      <div class="w-top">
+        <div class="w-title">Co-Learning Circle Convener</div>
+        <span class="w-date">Sep. 2025</span>
+      </div>
+      <div class="w-place">NTHU Center for Teaching & Learning Development</div>
       <ul>
         <li>Convened and facilitated a cross-national student learning group on English for Career Readiness — interview skills, workplace communication, and soft skills development.</li>
       </ul>
     </div>
 
-    <div class="entry">
-      <div class="title">Drama Preparation Course Assistant</div>
-      <div class="meta">May 2024 &ensp;·&ensp; Nanpu Shiye Festival Environmental Theater, NTHU</div>
+    <div class="work-card">
+      <div class="w-top">
+        <div class="w-title">Drama Preparation Course Assistant</div>
+        <span class="w-date">May 2024</span>
+      </div>
+      <div class="w-place">Nanpu Shiye Festival Environmental Theater, NTHU</div>
     </div>
-
   </div>
 
 </div>
 
-<footer>Ye Min Aung &ensp;·&ensp; ye.ma@gapp.nthu.edu.tw &ensp;·&ensp; Hsinchu, Taiwan</footer>
+<!-- SIDEBAR -->
+<div class="sidebar">
+
+  <!-- AWARDS -->
+  <div class="side-block" id="awards">
+    <div class="side-title">Grants & Awards</div>
+
+    <div class="award-row">
+      <div class="award-dot"></div>
+      <div>
+        <div class="a-name">MOE Taiwan Scholarship</div>
+        <div class="a-year">NTHU · 2023–2027</div>
+      </div>
+    </div>
+
+    <div class="award-row">
+      <div class="award-dot"></div>
+      <div>
+        <div class="a-name">NTHU International Student Scholarship</div>
+        <div class="a-year">2023–2024</div>
+      </div>
+    </div>
+
+    <div class="award-row">
+      <div class="award-dot"></div>
+      <div>
+        <div class="a-name">NSTC Undergraduate Research Grant</div>
+        <div class="a-year">2025–2026</div>
+      </div>
+    </div>
+
+    <div class="award-row">
+      <div class="award-dot"></div>
+      <div>
+        <div class="a-name">Myanmar Students Association Scholarship</div>
+        <div class="a-year">Dec. 2024</div>
+      </div>
+    </div>
+
+    <div class="award-row">
+      <div class="award-dot"></div>
+      <div>
+        <div class="a-name">Yunnan Natives Association Scholarship</div>
+        <div class="a-year">Dec. 2025</div>
+      </div>
+    </div>
+
+    <div class="award-row">
+      <div class="award-dot"></div>
+      <div>
+        <div class="a-name">Excellence Award — Chinese Speaking Contest</div>
+        <div class="a-year">Sun Yat-sen Memorial Hall, Taipei · Dec. 2025</div>
+      </div>
+    </div>
+
+    <div class="award-row">
+      <div class="award-dot"></div>
+      <div>
+        <div class="a-name">Outstanding Academic Work Award ×2</div>
+        <div class="a-year">NTHU Center for General Education · 2024 & 2025</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SKILLS -->
+  <div class="side-block">
+    <div class="side-title">Technical Skills</div>
+
+    <div class="skill-row">
+      <div class="skill-lbl">Programming</div>
+      <div class="skill-tags">
+        <span class="stag">Python</span>
+        <span class="stag">R</span>
+        <span class="stag">C++</span>
+        <span class="stag">Rust</span>
+      </div>
+    </div>
+
+    <div class="skill-row">
+      <div class="skill-lbl">Tools</div>
+      <div class="skill-tags">
+        <span class="stag">PyTorch</span>
+        <span class="stag">scikit-learn</span>
+        <span class="stag">Power BI</span>
+        <span class="stag">MATLAB</span>
+        <span class="stag">Git</span>
+        <span class="stag">LaTeX</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- LANGUAGES -->
+  <div class="side-block">
+    <div class="side-title">Languages</div>
+
+    <div class="lang-row">
+      <div class="lang-top"><span class="ln">Burmese</span><span class="lv">Native</span></div>
+      <div class="lang-bar"><div class="lang-fill" style="width:100%"></div></div>
+    </div>
+
+    <div class="lang-row">
+      <div class="lang-top"><span class="ln">Chinese</span><span class="lv">Fluent · TOCFL C2</span></div>
+      <div class="lang-bar"><div class="lang-fill" style="width:95%"></div></div>
+    </div>
+
+    <div class="lang-row">
+      <div class="lang-top"><span class="ln">English</span><span class="lv">Good · C1</span></div>
+      <div class="lang-bar"><div class="lang-fill" style="width:78%"></div></div>
+    </div>
+
+    <div class="lang-row">
+      <div class="lang-top"><span class="ln">Shan</span><span class="lv">Good</span></div>
+      <div class="lang-bar"><div class="lang-fill" style="width:70%"></div></div>
+    </div>
+  </div>
+
+</div>
+</div>
+
+<footer>Ye Min Aung · ye.ma@gapp.nthu.edu.tw · Hsinchu, Taiwan</footer>
 
 </body>
 </html>
